@@ -1,11 +1,19 @@
 function App() {
-    const isLogin=false
+    const articleType=1
+
+    function getArticleTem(){
+        if (articleType===0){
+            return <div>我是无图文章</div>
+        }else if( articleType===1){
+            return <div>我是单图文章</div>
+        }else {
+            return <div>我是三图模式</div>
+        }
+    }
   return (
     <div className="App">
-        {/*逻辑与 &&*/}
-        {isLogin &&<span>this is span</span>}
-        {/*三元运算*/}
-        {isLogin?<span>jack</span>:<span>loading</span>}
+        {/*调用函数渲染不同的模板*/}
+        {getArticleTem()}
     </div>
   );
 }
