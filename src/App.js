@@ -1,7 +1,7 @@
 import './App.scss'
 import avatar from './images/bozai.png'
 import {useState} from "react";
-
+import _ from 'lodash'
 /**
  * 评论列表的渲染和操作
  *
@@ -75,7 +75,7 @@ const tabs = [
 ]
 
 const App = () => {
- const [commentList,setCommentList]=useState(defaultList)
+ const [commentList,setCommentList]=useState(_.orderBy(defaultList,'like','desc'))
 
   const handleClick=(id)=>{
    console.log(id)
@@ -86,7 +86,13 @@ const App = () => {
   const [type,setType]=useState('hot')
   const handleTabChange=(type)=>{
    console.log(type)
-setType(type)
+   setType(type)
+  if (type==='hot'){
+      setCommentList(_.orderBy(commentList,'like','desc'))
+  }else {
+      setCommentList(_.orderBy(commentList,'ctime','desc'))
+  }
+
   }
   return (
     <div className="app">
