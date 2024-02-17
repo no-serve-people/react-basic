@@ -1,15 +1,11 @@
 function App() {
-  const list=[
-      {id:1001,name:'vue'},
-      {id:1002,name:'react'},
-      {id:1003,name:'angular'}
-  ]
+    const isLogin=false
   return (
     <div className="App">
-        {/*渲染列表*/}
-        <ul>
-            {list.map(item=><li key={item.id}>{item.name}</li>)}
-        </ul>
+        {/*逻辑与 &&*/}
+        {isLogin &&<span>this is span</span>}
+        {/*三元运算*/}
+        {isLogin?<span>jack</span>:<span>loading</span>}
     </div>
   );
 }
