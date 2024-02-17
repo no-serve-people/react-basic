@@ -1,14 +1,12 @@
+import {useState} from "react";
 function App() {
-   // function Button(){
-   //     return <button>click me!</button>
-   // }
-    const Button=()=>{
-            return <button>click me!</button>
+    const [count,setCount]=useState(0)
+    const handleClick=()=>{
+        setCount(count+1)
     }
   return (
     <div className="App">
-        <Button/>
-        <Button></Button>
+        <button onClick={handleClick}>{count}</button>
     </div>
   );
 }
