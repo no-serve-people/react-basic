@@ -1,23 +1,16 @@
-import {useState} from "react";
+import './index.css'
 function App() {
-    const [count,setCount]=useState(0)
-    const handleClick=()=>{
-        setCount(count+1)
-    }
-    // 修改对象状态
-    const [form,setForm]=useState({name:'jack'})
-
-    const changeForm=()=>{
-        setForm({
-            ...form,
-            name: 'john'
-        })
-    }
+  const style={
+      color:'red',
+      fontSize:'50px'
+  }
   return (
-    <div className="App">
-        <button onClick={handleClick}>{count}</button>
-        <button onClick={changeForm}>修改form {form.name}</button>
-    </div>
+      <div>
+          {/*行内样式规则*/}
+          <span style={style}>this is span</span>
+          {/*通过class类名控制*/}
+          <span className="foo">this is class foo</span>
+      </div>
   );
 }
 
