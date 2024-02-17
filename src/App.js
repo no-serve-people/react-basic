@@ -82,6 +82,12 @@ const App = () => {
 
     setCommentList(commentList.filter(item=> item.rpid !== id))
   }
+
+  const [type,setType]=useState('hot')
+  const handleTabChange=(type)=>{
+   console.log(type)
+setType(type)
+  }
   return (
     <div className="app">
       {/* 导航 Tab */}
@@ -94,8 +100,9 @@ const App = () => {
           </li>
           <li className="nav-sort">
             {/* 高亮类名： active */}
-            <span className='nav-item'>最新</span>
-            <span className='nav-item'>最热</span>
+            {tabs.map(item=><span key={item.type}
+                                  className={`nav-item ${type===item.type&&'active'}`}
+                                  onClick={()=>handleTabChange(item.type)}>{item.text}</span>)}
           </li>
         </ul>
       </div>
