@@ -1,11 +1,14 @@
 function App() {
-    // 传递自定义参数 而且需要事件对象e
-    const handleClick=(name,e)=>{
-        console.log('button被点击了',name,e)
+   // function Button(){
+   //     return <button>click me!</button>
+   // }
+    const Button=()=>{
+            return <button>click me!</button>
     }
   return (
     <div className="App">
-        <button onClick={(e)=>handleClick('jack',e)}>click me</button>
+        <Button/>
+        <Button></Button>
     </div>
   );
 }
