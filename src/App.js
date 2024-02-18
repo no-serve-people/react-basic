@@ -1,19 +1,19 @@
 import './App.scss'
 import avatar from './images/bozai.png'
-import {useState} from "react";
+import {useRef, useState} from "react";
 import _ from 'lodash'
 import classNames from 'classnames'
 
 const App = () => {
 
-  const [value,setValue]=useState('')
+    const inputRef=useRef(null)
+    const showDom=()=>{
+        console.dir(inputRef.current)
+    }
   return (
       <div>
-          <input
-          value={value}
-          onChange={(e)=>setValue(e.target.value)}
-          type="text"
-          />
+       <input type="text" ref={inputRef}/>
+          <button onClick={showDom}>获取dom</button>
       </div>
   )
 }
