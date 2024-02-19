@@ -8,7 +8,7 @@ import dayjs  from "dayjs";
 
 function Son(props){
     console.log(props)
-    return <div>this is son,{props.name}，jsx:{props.child}</div>
+    return <div>this is son,{props.children}</div>
 }
 const App = () => {
     const name='this is app name'
@@ -16,14 +16,9 @@ const App = () => {
     return (
         <div>
             <Son
-                name={name}
-                age={18}
-                isTrue={false}
-                list={['vue','react']}
-                obj={{name:'jack'}}
-                cb={()=>console.log(123)}
-                child={<span>this is span</span>}
-            />
+            >
+                <span>this is span children</span>
+            </Son>
         </div>
     )
 }
