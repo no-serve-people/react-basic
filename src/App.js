@@ -1,37 +1,38 @@
 import './App.scss'
 import avatar from './images/bozai.png'
-import {useRef, useState} from "react";
+import {createContext, useContext, useRef, useState} from "react";
 import _ from 'lodash'
 import classNames from 'classnames'
 import {v4 as uuidV4} from 'uuid'
 import dayjs from "dayjs";
 
 
-function A({onGetMsg}) {
-    const msg = 'this is a component'
+const MsgContent=createContext()
+function A() {
 
     return (
         <div>
-            this is a,
-            <button onClick={()=>onGetMsg(msg)}>send</button>
+            this is a component
+            <B/>
         </div>
     )
 }
 
-function B({name}) {
+function B() {
+  const name= useContext(MsgContent)
     return (<div>this is b component,{name}</div>)
 }
 
 function App() {
 
-    const [name, setName] = useState('')
-    const getMsg = (msg) => {
-        setName(msg)
-    }
+    const name='this is app'
     return (
         <div>
-            <A onGetMsg={getMsg}/>
-            <B name={name}/>
+            <MsgContent.Provider value={name}>
+                this is a App
+                <A/>
+            </MsgContent.Provider>
+
         </div>
     )
 }
