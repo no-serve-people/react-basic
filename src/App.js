@@ -4,27 +4,34 @@ import {useRef, useState} from "react";
 import _ from 'lodash'
 import classNames from 'classnames'
 import {v4 as uuidV4} from 'uuid'
-import dayjs  from "dayjs";
+import dayjs from "dayjs";
 
-function Son({onGetMsg}){
-    const msg= 'this is son msg'
+
+function A({onGetMsg}) {
+    const msg = 'this is a component'
 
     return (
-        <button onClick={()=>onGetMsg(msg)}>点击</button>
+        <div>
+            this is a,
+            <button onClick={()=>onGetMsg(msg)}>send</button>
+        </div>
     )
 }
-const App = () => {
-    const [msg,setMsg]=useState('')
-    const getMsg=(text)=>{
-        console.log(text)
-        setMsg(text)
+
+function B({name}) {
+    return (<div>this is b component,{name}</div>)
+}
+
+function App() {
+
+    const [name, setName] = useState('')
+    const getMsg = (msg) => {
+        setName(msg)
     }
     return (
         <div>
-            <span>{msg}</span>
-            <Son
-                onGetMsg={getMsg}
-          />
+            <A onGetMsg={getMsg}/>
+            <B name={name}/>
         </div>
     )
 }
