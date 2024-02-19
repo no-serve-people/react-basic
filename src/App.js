@@ -1,6 +1,6 @@
 import './App.scss'
 import avatar from './images/bozai.png'
-import {useState} from "react";
+import {useRef, useState} from "react";
 import _ from 'lodash'
 import classNames from 'classnames'
 import {v4 as uuidV4} from 'uuid'
@@ -81,6 +81,8 @@ const App = () => {
     const [commentList,setCommentList]=useState(_.orderBy(defaultList,'like','desc'))
 
 
+    const inputRef=useRef(null)
+
     const handleClick=(id)=>{
         console.log(id)
 
@@ -115,6 +117,8 @@ const App = () => {
                 like: 66,
             }
         ])
+        setContent('')
+        inputRef.current.focus()
     }
     return (
         <div className="app">
@@ -150,6 +154,7 @@ const App = () => {
                             className="reply-box-textarea"
                             placeholder="发一条友善的评论"
                             value={content}
+                            ref={inputRef}
                             onChange={(e)=>setContent(e.target.value)}
                         />
                         {/* 发布按钮 */}
