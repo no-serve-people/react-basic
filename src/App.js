@@ -6,19 +6,25 @@ import classNames from 'classnames'
 import {v4 as uuidV4} from 'uuid'
 import dayjs  from "dayjs";
 
-function Son(props){
-    console.log(props)
-    return <div>this is son,{props.children}</div>
-}
-const App = () => {
-    const name='this is app name'
+function Son({onGetMsg}){
+    const msg= 'this is son msg'
 
     return (
+        <button onClick={()=>onGetMsg(msg)}>点击</button>
+    )
+}
+const App = () => {
+    const [msg,setMsg]=useState('')
+    const getMsg=(text)=>{
+        console.log(text)
+        setMsg(text)
+    }
+    return (
         <div>
+            <span>{msg}</span>
             <Son
-            >
-                <span>this is span children</span>
-            </Son>
+                onGetMsg={getMsg}
+          />
         </div>
     )
 }
